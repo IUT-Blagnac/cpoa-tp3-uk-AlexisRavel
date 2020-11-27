@@ -7,17 +7,14 @@ import pizza.PizzeriaFactory;
 public class PizzaTestDrive {
 	
 	public static void main(String[] args) {
-		
-		PizzeriaFactory factory = PizzeriaFactory.getInstance();
-		
-        Pizzeria brest = factory.create("Brest");
-        Pizzeria strasbourg = factory.create("Strasbourg");
-        
-        Pizza pizza = brest.orderPizza("cheese");
-        System.out.println("Pizza ordered : " + pizza.getName() + "\n");
+        Pizzeria shopFromBrest = new PizzeriaFactory().create("Brest");
+        Pizzeria shopFromStrasbourg = new PizzeriaFactory().create("Strasbourg");
 
-        pizza = strasbourg.orderPizza("cheese");
-        System.out.println("Pizza ordered : " + pizza.getName() + "\n");
+        Pizza pizza = shopFromBrest.orderPizza("cheese");
+        System.out.println("JMB has ordered a " + pizza.getName() + "\n");
+
+        pizza = shopFromStrasbourg.orderPizza("cheese");
+        System.out.println("JMI has ordered a " + pizza.getName() + "\n");
     }
 
 }

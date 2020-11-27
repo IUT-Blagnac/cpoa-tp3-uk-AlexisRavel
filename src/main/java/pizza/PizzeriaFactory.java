@@ -4,7 +4,7 @@ public class PizzeriaFactory {
 	
 	private static PizzeriaFactory uniqueInstance = new PizzeriaFactory();
 	
-	private PizzeriaFactory() {}
+	public PizzeriaFactory() {}
 	
 	public static PizzeriaFactory getInstance() {
 		return uniqueInstance;
