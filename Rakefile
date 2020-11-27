@@ -12,4 +12,3 @@ task :checkModel do
     sh 'ruby tests/checkModel.rb docs/TP3.plantuml'
     puts "=> SUCCESS"
 end
-
