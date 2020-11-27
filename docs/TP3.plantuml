@@ -1,0 +1,90 @@
+@startuml
+abstract class Pizza [[java:pizza.Pizza]] {
+	#String name
+	#String crust
+	#String sauce
+	#ArrayList<String> garnitures
+	+void prepare()
+	+void bake()
+	+void cut()
+	+void wrap()
+	+String getName()
+}
+class PizzaFactoryBrest [[java:pizza.PizzaFactoryBrest]] {
+	-{static}PizzaFactoryBrest instance
+	-PizzaFactoryBrest()
+	+{static}PizzaFactoryBrest getInstance()
+	+Pizza create(String name)
+}
+class PizzaFactory [[java:pizza.PizzaFactory]] {
+}
+PizzaFactory <|-- PizzaFactoryBrest
+abstract class Pizzeria [[java:pizza.Pizzeria]] {
+	+Pizzeria(PizzaFactory pizzaFactory)
+	+Pizza orderPizza(String type)
+	#Pizza createPizza(String type)
+}
+class PizzaFactory [[java:pizza.PizzaFactory]] {
+}
+Pizzeria --> "1" PizzaFactory : pizzaFactory
+class PizzaPoivronStyleBrest [[java:pizza.PizzaPoivronStyleBrest]] {
+}
+class Pizza [[java:pizza.Pizza]] {
+}
+Pizza <|-- PizzaPoivronStyleBrest
+class PizzeriaStrasbourg [[java:pizza.PizzeriaStrasbourg]] {
+	+PizzeriaStrasbourg(PizzaFactory pizzaFactory)
+}
+class Pizzeria [[java:pizza.Pizzeria]] {
+}
+Pizzeria <|-- PizzeriaStrasbourg
+class PizzaCheeseStyleStrasbourg [[java:pizza.PizzaCheeseStyleStrasbourg]] {
+}
+class Pizza [[java:pizza.Pizza]] {
+}
+Pizza <|-- PizzaCheeseStyleStrasbourg
+class PizzaPoivronStyleStrasbourg [[java:pizza.PizzaPoivronStyleStrasbourg]] {
+}
+class Pizza [[java:pizza.Pizza]] {
+}
+Pizza <|-- PizzaPoivronStyleStrasbourg
+abstract class PizzaFactory [[java:pizza.PizzaFactory]] {
+	+{abstract}Pizza create(String name)
+}
+class PizzaFactoryStrasbourg [[java:pizza.PizzaFactoryStrasbourg]] {
+	-{static}PizzaFactoryStrasbourg instance
+	-PizzaFactoryStrasbourg()
+	+{static}PizzaFactoryStrasbourg getInstance()
+	+Pizza create(String name)
+}
+class PizzaFactory [[java:pizza.PizzaFactory]] {
+}
+PizzaFactory <|-- PizzaFactoryStrasbourg
+class PizzaGrecqueStyleStrasbourg [[java:pizza.PizzaGrecqueStyleStrasbourg]] {
+}
+class Pizza [[java:pizza.Pizza]] {
+}
+Pizza <|-- PizzaGrecqueStyleStrasbourg
+class PizzaGrecqueStyleBrest [[java:pizza.PizzaGrecqueStyleBrest]] {
+}
+class Pizza [[java:pizza.Pizza]] {
+}
+Pizza <|-- PizzaGrecqueStyleBrest
+class PizzaCheeseStyleBrest [[java:pizza.PizzaCheeseStyleBrest]] {
+}
+class Pizza [[java:pizza.Pizza]] {
+}
+Pizza <|-- PizzaCheeseStyleBrest
+class PizzeriaFactory [[java:pizza.PizzeriaFactory]] {
+	-{static}PizzeriaFactory uniqueInstance
+	-PizzeriaFactory()
+	+{static}PizzeriaFactory getInstance()
+	+Pizzeria create(String string)
+}
+class PizzeriaBrest [[java:pizza.PizzeriaBrest]] {
+	+PizzeriaBrest(PizzaFactory pizzaFactory)
+}
+class Pizzeria [[java:pizza.Pizzeria]] {
+}
+Pizzeria <|-- PizzeriaBrest
+@enduml
